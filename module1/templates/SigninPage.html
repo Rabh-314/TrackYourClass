@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'SigninPage1.css' %}">
+</head>
+<body>
+    <div class="main">
+        <div class="photo">
+            <div class="hide-me-please">
+                <div class="inphoto"><b>Register</b><br><br>to
+                    Get Started with<br><br>
+                    <u>TrackYourClass</u>
+                </div>
+                <div class="start-button-row"
+                    style="justify-content: space-between;">
+                    <a href="/loginpage/">
+                        <div class="start-home">
+                            login
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="part">
+                    <div class="part1">
+                        <div class="inphoto"><b>Register</b><br><br>
+                            to
+                            Get Started with<br><br>
+                            <u>TrackYourClass</u>
+                        </div>
+                        <div class="start-button-row">
+                            <div class="start-button">
+                                Click Here😉
+                            </div>
+                        </div>
+                        <div class="start-button-row"
+                            style="justify-content: space-between;">
+                            <a href="/loginpage/">
+                                <div class="start-home">
+                                    login
+                                </div>
+                            </a>
+                            
+                        </div>
+                        {% for i in messages %}
+                        {{i}}
+                        {% endfor %}
+                    </div>
+                    <!-- part1 Students Detail -->
+                    <div class="part1">
+                        <h1>Personal Details</h1><br><br>
+                        <div class="element-name">
+                            <input type="text" name="fname" class="inpN"
+                                placeholder="First Name" required>
+                            <input type="text" name="lname" class="inpN"
+                                placeholder="Last Name" required><br>
+                        </div>
+                        <div class="element">
+                            <input type="date" name="dob" class="inp"
+                                placeholder="Date Of Birth">
+                        </div>
+                        <div class="element">
+                            Gender:<input type="radio" name="gender"
+                                value="male">Male
+                            <input type="radio" name="gender"
+                                value="female">Female
+                        </div>
+                        <div class="element">
+                            <input type="mail" name="mail" class="inp"
+                                placeholder="Email" required>
+                        </div>
+                        <div class="element">
+                            <input type="text" name="phone" class="inp"
+                                placeholder="Phone ">
+                        </div>
+                        <div class="element">
+                            <input type="file" name="photo" class="inp">
+                        </div>
+                        <div class="element">
+                            <select name="dept" class="inp">
+                                <option value="None">Department</option>
+                                {% for dept in context %}
+                                <option value="{{dept.id}}"> {{dept}} </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Mothers Details -->
+                    <div class="part1">
+                        <h1>Mothers Details</h1><br><br>
+                        <div class="element-name">
+                            <input type="text" name="Mfname" class="inpN"
+                                placeholder="First Name" required>
+                            <input type="text" name="Mlname" class="inpN"
+                                placeholder="Last Name" required><br>
+                        </div>
+                        <div class="element">
+                            <input type="text" name="Mphone" class="inp"
+                                placeholder="Phone">
+                        </div>
+                        <div class="element">
+                            <input type="mail" name="Mmail" class="inp"
+                                placeholder="Email">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="Moccupassion" class="inp"
+                                placeholder="Occupassion ">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="Mincome" class="inp"
+                                placeholder="Annual Income">
+                        </div>
+                    </div>
+                    <!-- Fathers Details -->
+                    <div class="part1">
+                        <h1>Fathers Details</h1><br><br>
+                        <div class="element-name">
+                            <input type="text" name="Ffname" class="inpN"
+                                placeholder="First Name" required>
+                            <input type="text" name="Flname" class="inpN"
+                                placeholder="Last Name" required><br>
+                        </div>
+                        <div class="element">
+                            <input type="text" name="Fphone" class="inp"
+                                placeholder="Phone">
+                        </div>
+                        <div class="element">
+                            <input type="mail" name="Fmail" class="inp"
+                                placeholder="Email">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="Foccupassion" class="inp"
+                                placeholder="Occupassion ">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="Fincome" class="inp"
+                                placeholder="Annual Income">
+                        </div>
+                    </div>
+                    <!-- Adrress  -->
+                    <div class="part1">
+                        <h1>Address</h1><br><br>
+                        <div class="element">
+                            <input type="text" name="country" class="inp"
+                                placeholder="country">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="state" class="inp"
+                                placeholder="State">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="city" class="inp"
+                                placeholder="City">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="pin" class="inp"
+                                placeholder="PIN">
+                        </div>
+                        <div class="element">
+                            <input type="text" name="line1" class="inp"
+                                placeholder="Address Line 1">
+                        </div>
+                        <div class="element">
+                            <input type="submit" value="Register"
+                                class="submit">
+                        </div>
+                    
+                    </div>
+                </div>
+            </form>
+            <div class="anim">
+                <div class="but1">
+                    <button onclick="slide(-1)">❮</button>
+                </div>
+                <div class="but2">
+                    <button onclick="slide(1)">❯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let index = 0;
+        const arr = document.querySelectorAll(".part1");
+        const first_effect = document.querySelector(".start-button");
+        first_effect.addEventListener('click', movefirst);
+        function movefirst() {
+            document.querySelector(".hide-me-please").style.display = "block";
+            slide(1);
+        }
+        document.querySelector('.but1').style.visibility = "hidden";
+        document.querySelector('.but2').style.visibility = "visible";
+        move(index)
+        function slide(n) {
+            index = index + n;
+            if (index < 0) {
+                index = arr.length - 1;
+            }
+            if (index >= arr.length) {
+                index = 0;
+            }
+            move(index)
+        }
+        function move(p) {
+            let i = 0;
+            console.log(p)
+            for (i = 0; i < arr.length; i++) {
+                if (i == p) {
+                    arr[i].style.display = "block";
+                } else {
+                    arr[i].style.display = "none";
+                }
+            }
+            if (p == arr.length - 1) {
+                document.querySelector('.but2').style.visibility = "hidden";
+                document.querySelector('.but1').style.visibility = "visible";
+            } else if (p == 0) {
+                document.querySelector('.but1').style.visibility = "hidden";
+                document.querySelector('.but2').style.visibility = "hidden";
+            } else if (p == 1) {
+                document.querySelector('.but1').style.visibility = "hidden";
+                document.querySelector('.but2').style.visibility = "visible";
+            } else {
+                document.querySelector('.but1').style.visibility = "visible";
+                document.querySelector('.but2').style.visibility = "visible";
+            }
+        }
+    </script>
+</body>
+</html>

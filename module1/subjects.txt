@@ -1,0 +1,411 @@
+Mathematics for Engineers
+Physics and Chemistry of Materials
+Engineering Drawing and Graphics
+Introduction to Computer Programming
+Electrical Circuits and Networks
+Mechanics of Solids
+Thermodynamics
+Fluid Mechanics
+Differential Equations
+Digital Logic Design
+Control Systems
+Data Structures and Algorithms
+Introduction to Robotics
+Material Science and Engineering
+Engineering Ethics and Professionalism
+Environmental Science and Engineering
+Numerical Methods
+Optimization Techniques
+Communication Systems
+Engineering Economics
+Industrial Engineering
+Machine Learning and Artificial Intelligence
+Computer Networks
+Renewable Energy Systems
+Human-Computer Interaction
+Biomedical Engineering
+VLSI Design
+Database Management Systems
+Operating Systems
+Software Engineering Principles
+Project Management for Engineers
+Engineering Geology
+Geotechnical Engineering
+Transportation Engineering
+Structural Analysis
+Hydraulics and Hydrology
+Engineering Mathematics
+Probability and Statistics for Engineers
+Introduction to Mechatronics
+Nanotechnology in Engineering
+Digital Signal Processing
+Microprocessor Systems
+Engineering Optics
+Industrial Automation
+Photonics and Optoelectronics
+Computational Fluid Dynamics
+Power Electronics
+Advanced Manufacturing Processes
+Renewable Energy Technologies
+Cybersecurity for Engineers
+Computer-Aided Design
+Instrumentation and Measurement
+Robotics Programming
+Introduction to Artificial Neural Networks
+Fuzzy Logic and Applications
+Engineering Acoustics
+Composite Materials
+Engineering Entrepreneurship
+Virtual Reality in Engineering
+Introduction to Quantum Mechanics
+Engineering Risk Analysis
+Game Development for Engineers
+Advanced Control Systems
+Digital Image Processing
+Internet of Things (IoT)
+Ethical Hacking for Engineers
+Information Theory and Coding
+Renewable Energy Policy and Planning
+Sustainable Engineering Practices
+Quality Control and Six Sigma
+Engineering and Society
+Introduction to Bioinformatics
+Human Factors Engineering
+Introduction to Cryptography
+Introduction to Smart Grids
+Wireless Communication Systems
+Engineering and the Environment
+Engineering for Developing Communities
+Introduction to Quantum Computing
+Introduction to Cyber-Physical Systems
+Engineering Disaster Management
+Engineering and Public Policy
+Introduction to Computational Biology
+Engineering Leadership and Innovation
+Introduction to Satellite Communication
+Engineering and Globalization
+Engineering and the Arts
+Introduction to Space Technology
+Engineering and Cultural Diversity
+Introduction to Industrial Ecology
+Engineering and Social Justice
+Introduction to Cognitive Science
+Engineering and Philosophy
+Introduction to Sustainable Design
+Engineering and Human Rights
+Introduction to Comparative Literature
+
+
+
+
+
+
+
+
+
+
+class DailyAttendence(models.Model):
+    date = models.DateField(default=timezone.now)
+    is_present = models.BooleanField(default=False)
+    def __str__(self):
+        return f'{self.date}  {self.is_present}'
+
+class TeacherWiseAttendence(models.Model):
+    teacher = models.ForeignKey(Teacher,on_delete=models.CASCADE)
+    dailyattendence = models.ManyToManyField(DailyAttendence)
+    total_count = models.PositiveIntegerField(default=0)
+    def __str__(self):
+        return f'{self.teacher}'
+
+    
+class Attendence(models.Model):
+    semester = models.ForeignKey(Semester_Count,on_delete=models.CASCADE)
+    teacherwiseattendence = models.ForeignKey(TeacherWiseAttendence,on_delete=models.CASCADE,null=True)
+    def __str__(self):
+        return f'{self.semester}  {self.total_count}'
+
+
+
+
+
+
+
+
+class swsatt(admin.ModelAdmin):
+    list_display = ["date","is_present"]
+admin.site.register(DailyAttendence,swsatt)
+
+
+class TWA(admin.ModelAdmin):
+    list_display = ["teacher","total_count"]
+admin.site.register(TeacherWiseAttendence,TWA)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from django.db import models
+# from django.contrib.auth.models import User
+# from django.utils import timezone
+
+
+# class Department(models.Model):
+#     department = models.CharField(max_length=100)
+#     department_code = models.CharField(max_length=30)
+#     course_duration = models.PositiveIntegerField()
+#     def __str__(self):
+#         return f'{self.department}'
+    
+# class Semester_Count(models.Model):
+#     semester_count = models.PositiveIntegerField(default=1)
+#     def __str__(self) :
+#         return f'{self.semester_count}'
+    
+# class Subject(models.Model):
+#     subject = models.CharField(max_length=100)
+#     subject_code = models.CharField(max_length=20)
+#     def __str__(self):
+#         return f'{self.subject}'
+
+# class Semester(models.Model):
+#     department = models.ForeignKey(Department,on_delete=models.CASCADE)
+#     semester_count = models.ForeignKey(Semester_Count,on_delete=models.CASCADE)
+#     duration = models.DateTimeField(default=timezone.now,null=True)
+#     sem_wise_sub = models.ManyToManyField(Subject,through="SemesterWiseSubject")
+#     def __str__(self):
+#         return f'{self.semester_count} {self.department}'
+# class SemesterWiseSubject(models.Model):
+#     subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
+#     semester = models.ForeignKey(Semester,on_delete=models.CASCADE)
+#     def __str__(self):
+#         return f'{self.subject}'
+
+
+
+
+# class EachSubjectMarks(models.Model):
+#     subject = models.ForeignKey(SemesterWiseSubject,on_delete=models.CASCADE)
+#     number = models.PositiveIntegerField()
+#     def __str__(self):
+#         return f'{self.subject}'
+# class CAMarks(models.Model):
+#     eachsubjectmarks = models.ManyToManyField(EachSubjectMarks)
+#     def __str__(self):
+#         return f'{self.eachsubjectmarks}'
+# class Marks(models.Model):
+#     caexam = models.ManyToManyField(CAMarks)
+
+
+
+# class Teacher(models.Model):
+#     user = models.OneToOneField(User,on_delete=models.CASCADE)
+#     name = models.CharField(max_length=40)
+#     gender = models.CharField(max_length=10)
+#     date_of_birth = models.DateField()
+#     date_of_joining = models.DateTimeField(default=timezone.now)
+#     mail = models.EmailField()
+#     phone = models.CharField(max_length=12)
+#     role = models.CharField(max_length=20,default="teacher")
+#     department = models.ForeignKey(Department,on_delete=models.CASCADE)
+#     photo = models.ImageField(upload_to='image/',null = True)
+#     is_hod = models.BooleanField(default=False)
+    
+#     def __str__(self):
+#         return f'{self.name} {self.department}'
+
+
+
+# class RoutineCell(models.Model):
+#     start_time = models.TimeField()
+#     end_time = models.TimeField()
+#     department = models.ForeignKey(Department,on_delete=models.CASCADE,null=True)
+#     sem = models.ForeignKey(Semester,on_delete=models.CASCADE,null=True)
+#     subject = models.ForeignKey(SemesterWiseSubject,on_delete=models.CASCADE)
+#     def __str__(self):
+#         return f'{self.subject} - {self.start_time} to {self.end_time}'
+
+
+# class DailyRoutine(models.Model):
+#     daily_routine = models.ManyToManyField(RoutineCell)
+#     day = models.CharField(max_length=20)
+#     teacher = models.ForeignKey(Teacher,on_delete=models.CASCADE,null=True)
+#     def __str__(self):
+#         return f'{self.teacher} - {self.day}'
+
+# class DailyAttendence(models.Model):
+#     date = models.DateField(default=timezone.now)
+#     is_present = models.BooleanField(default=False)
+#     def __str__(self):
+#         return f'{self.date}  {self.is_present}'
+# class TeacherWiseAttendence(models.Model):
+#     teacher = models.ForeignKey(Teacher,on_delete=models.CASCADE)
+#     dailyattendence = models.ManyToManyField(DailyAttendence)
+#     total_count = models.PositiveIntegerField(default=0)
+#     def __str__(self):
+#         return f'{self.teacher}'
+# class Attendence(models.Model):
+#     semester = models.ForeignKey(Semester_Count,on_delete=models.CASCADE)
+#     teacherwiseattendence = models.ForeignKey(TeacherWiseAttendence,on_delete=models.CASCADE,null=True)
+#     def __str__(self):
+#         return f'{self.semester}'
+
+
+
+
+# class Student(models.Model):
+#     user = models.OneToOneField(User,on_delete=models.CASCADE)
+#     name = models.CharField(max_length=40)
+#     gender = models.CharField(max_length=10)
+#     date_of_birth = models.DateField()
+#     mail = models.EmailField()
+#     phone = models.CharField(max_length=12)
+#     role = models.CharField(max_length=20,default="student")
+#     is_active = models.BooleanField(default=False)
+#     photo = models.ImageField(upload_to='image/',null = True)
+#     department = models.ForeignKey(Department,on_delete=models.SET_NULL,null=True)
+#     semester = models.ForeignKey(Semester,on_delete=models.SET_NULL,null=True)
+#     attendence = models.ForeignKey(Attendence,on_delete=models.SET_NULL,null=True)
+    
+#     def __str__(self):
+#         return self.name
+
+
+# class Head_of_Department(models.Model):
+#     teacher = models.ForeignKey(Teacher,on_delete=models.CASCADE)
+#     department = models.ForeignKey(Department,on_delete=models.CASCADE,null=True)
+#     def __str__(self):
+#         return f'{self.teacher}'
+
+
+# class SemesterTeacherData(models.Model):
+#     teacher = models.ForeignKey(Teacher,on_delete=models.CASCADE)
+#     department = models.ForeignKey(Department,on_delete=models.CASCADE,null=True)
+#     semwisesub = models.ForeignKey(SemesterWiseSubject,on_delete=models.CASCADE)
+
+
+
+
+
+# class CurrentSubjectDepartmentSemesterWise(models.Model):
+#     department = models.ForeignKey(Department,on_delete=models.CASCADE,null=True)
+#     semester = models.PositiveIntegerField(default=0)
+#     subjcts = models.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Welcome HOD</h1>
+    
+    <h3>{{context.name}}</h3>
+    <h4>{{context.department.department}}</h4>
+    <!-- <img src="{{ i.photo.url }}" height="20%" width="20%" border="2px solid black"> -->
+    <br><br>
+    <h2>All TEACHERs</h2>
+    <div class="main">
+        <div class="all-teachers">
+            {% for i in emp %}
+            <h3>{{i.name}}</h3>
+            <h4>{{i.department.department}}</h4>
+            {% endfor %}
+        </div>
+        <div class="routine">
+            {% for sem in semester %}
+            <a href="/routine/{{id}}/{{sem.id}}/">make the routine for {{sem}}
+            </a><br>
+            {% endfor %}
+            <div>
+                <h1>LIST OF SUBJECTS</h1>
+                {% for list in filtered_list %}
+                {{list.semester}} -- {{list.subject}} --
+                {{list.subject_code}}<br>
+                {% endfor %}
+            </div>
+            <div>
+                <h1>TODAYS ROUTINE</h1>
+                {% for k in temp_dict %}
+                {% for j in k %}
+                {{j.start_time}} -- {{j.end_time}} ------:-> {{j.subject}}<br>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            <div>
+                <h1>MARKS</h1>
+                {% for mar in semester %}
+                <a href="/marks/{{id}}/{{mar.id}}/">Marks for the sem{{mar.semester_count}}
+                </a><br>
+                {% endfor %}
+            </div>
+            <div>
+              <h1>Upload marks</h1>
+                
+                
+            </div>
+        </div>
+    </div>
+    {% for s in semester %}
+    <div>
+        <a href="/teacherforsemester/{{dept}}/{{s.id}}/">Teacher For Semester
+            {{s.semester_count}} </a>
+    </div>
+    {% endfor %}

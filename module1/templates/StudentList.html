@@ -1,0 +1,53 @@
+{% extends "mainadmin.html" %}
+{% block start%}
+<div class="container-21" id="content1">
+    <h2>Student List</h2>
+    <div class="search-for">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="gender">Select Department:</label>
+                <select id="gender" name="dept" required>
+                    <option selected>Open this select menu</option>
+                    {% for i in dept %}
+                    <option value="{{i.id}}">{{i.department}}</option>
+                    {% endfor %}>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search">
+            </div>
+        </form>
+    </div>
+    {% if context %}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Gmail</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in context %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{i.name}}</td>
+                <td>{{i.mail}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.department.department}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    <div class="for-error-only">
+        {% for i in messages %}
+        {{i}}
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

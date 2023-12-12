@@ -1,0 +1,35 @@
+{% extends "HODHomePage.html" %}
+{% block start %}
+<div class="teacherforsemandsub">
+    <h1>ADD teacher for Semester</h1>
+    <h2>{{department}} {{semester_for_sub}} </h2>
+    <form method="post" id="TFS-form">
+        {% csrf_token %}
+        {% for s in subject %}
+        <div class="subject-data-each-div">
+            <label> {{s.subject}} </label>
+            <input type="hidden" name="subject_id_{{s.id}}" value="{{ s.id }}">
+            Teacher:
+            <select name="teacher_{{s.id}}">
+                <option value="None">select</option>
+                {% for t in emp %}
+                <option value="{{t.id}}"> {{t.name}} </option>
+                {% endfor %}
+            </select><br>
+            Subject Code: <input type="text" name="sub_code_{{s.id}}"><br><br>
+        </div>
+        {% endfor %}
+        <div style="display: flex;justify-content:flex-end;margin-top:5px">
+            {% if error_message1 %}
+            <h3>{{error_message1}}</h3>
+            {% else %}
+            <input type="submit" class="form-button" value="Submit"> <input
+                type="reset" class="form-button" value="Refresh">
+            {% endif %}
+            {% if error_message %}
+            <h3> {{error_message}} </h3>
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "mainadmin.html" %}
+{% block start%}
+  {% if length == 0 %}
+    <center><h2> No pending Student</h2></center>
+  {% else %}
+  <div class="container-21" id="content1" >
+    <h2>Pending Student</h2>
+    <table >
+        <thead>
+            
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Gmail</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Department</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in context %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{i.name}}</td>
+                <td>{{i.mail}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.department.department}}</td>
+                <td>
+                    <a href="/accepted/{{i.id}}/">
+                        <button type="button"
+                            class="btn-btn-primary">Accept</button>
+                    </a>
+                    <a href="/notaccepted/{{i.id}}/">
+                        <button type="button"
+                            class="btn-btn-primary">Reject</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  {% endif %}
+{% endblock %}

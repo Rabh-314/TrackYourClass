@@ -1,0 +1,59 @@
+{% extends "HODHomePage.html" %}
+{% block start%}
+<div class="teachervisitmain">
+    <div class="r-v-row1-e1">
+        <img src="{{ teacher.photo.url }}" alt="{{teacher.name}}">
+        <div class="details-teacher">
+            <h1>{{teacher.name}}</h1>
+            <h3>{{teacher.date_of_birth}}</h3>
+        </div>
+    </div>
+    <div class="r-v-row1-e2">
+        <h2>Teacher Details </h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td> :{{teacher.name}} </td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth</td>
+                    <td> :{{teacher.date_of_birth}} </td>
+                </tr>
+                <tr>
+                    <td>Date Of Joining</td>
+                    <td> :{{teacher.date_of_joining}} </td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td> :{{teacher.phone}} </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td> :{{teacher.mail}} </td>
+                </tr>
+                <tr>
+                    <td>Department</td>
+                    <td> :{{teacher.department}} </td>
+                </tr>
+                {% if teacher_sem_sub %}
+                <tr>
+                    <td>
+                        <h2>class details</h2>
+                    </td>
+                </tr>
+                {% for i in teacher_sem_sub %}
+                <tr>
+                    <td> {{i.semester.department}} -
+                        sem{{i.semester.semester_count}} </td>
+                    <td> :{{i.subject}} </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        
+        
+    </div>
+</div>
+{% endblock %}

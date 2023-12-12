@@ -1,0 +1,50 @@
+{% extends "HODHomePage.html" %}
+{% block start%}
+<div class="teachervisitmain">
+    <form action="" method="post">
+        {% csrf_token %}
+        Choose Department: <select name="sem_name">
+            {% if semtemp %}
+            <option value="{{semtemp}}">{{semtemp}}</option>
+            {% else %}
+            <option value="none">select</option>
+            {% endif %}
+            {% for i in CA_List %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Submit">
+        {% if subject_list %}
+        <div class="r-v-row1-e2">
+            <table id="studentTable" border="2px solid black"
+                style="border-collapse: collapse;">
+                <thead>
+                    <tr style="font-size: 15px;">
+                        <th style="font-size: 20px;">Name</th>
+                        {% for p in subject_list %}
+                        <th> {{p.subject_code}} </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in send_student_result %}
+                    <tr>
+                        {% for num in p %}
+                        <td> {{num}} </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <select name="choice" >
+            <option value="none">Please Choose</option>
+            <option value="yes">Lock and Save</option>
+            <option value="no">Delete CA Marks</option>
+        </select>
+        <input type="submit" value="Submit">
+        {% endif %}
+        
+    </form>
+</div>
+{% endblock %}

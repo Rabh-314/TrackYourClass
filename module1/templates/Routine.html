@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100vh; 
+    box-sizing: border-box;
+        }
+        .row1 {
+            background-color: rgb(86, 0, 166);
+            height: 40px;
+            color: black;
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+    line-height: 40px;
+        }
+        .row1 a {
+            color: black;
+            text-decoration: none;
+        }
+        .row2 {
+            background: linear-gradient(rgb(119, 199, 195), rgb(62, 62, 130), rgb(169, 98, 182));
+        }
+        .routine,
+        .sub-details {
+            margin: 12px;
+            padding: 15px;
+            border: 4px solid white;
+            
+        }
+        .routine button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+        .routine button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px;
+        }
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            overflow: auto;
+            white-space: nowrap;
+        }
+        th {
+            background: linear-gradient(rgb(149, 149, 253), rgb(192, 255, 212));
+        }
+        @media only screen and (max-width: 900px) {
+            .routine,
+            .sub-details {
+                margin: 8px;
+                overflow: scroll;
+            }
+           
+            .routine::-webkit-scrollbar { 
+                display: none; 
+            }
+            .sub-details::-webkit-scrollbar { 
+                display: none; 
+            }
+        
+            .routine button {
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="row1">
+            Track Your Class
+        </div>
+        <div class="row2">
+            <div class="routine">
+                <h2 style="text-decoration: underline;">Update Routine</h2>
+                <form id="editableTableForm" method="post">
+                    {% csrf_token %}
+                    <table border="2px solid">
+                        <thead>
+                            <th>Days</th>
+                            <th> 9:30--10:30</th>
+                            <th> 10:30--11:30</th>
+                            <th> 11:30--12:30</th>
+                            <th> 12:30--01:30</th>
+                            <th> 01:30--02:30</th>
+                            <th> 02:30--03:30</th>
+                            <th> 03:30--04:30</th>
+                            <th> 04:30--05:30</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Monday</th>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                            </tr>
+                            <tr>
+                                <th>Tuesday</th>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                            </tr>
+                            <tr>
+                                <th>Wednesday</th>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                            </tr>
+                            <tr>
+                                <th>Thursday</th>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                            </tr>
+                            <tr>
+                                <th>Friday</th>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                                <td contenteditable="true"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="display: flex;justify-content:flex-end;padding-right: 60px;">
+                        <button type="submit">Save Changes</button>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="sub-details">
+                <h2>Teacher And Subject Details</h2>
+                <table border="2px solid">
+                    <thead>
+                        <th>Teachers</th>
+                        <th> Subject</th>
+                        <th> Subject Code</th>
+                    </thead>
+                    <tbody>
+                        {% for data in list %}
+                        <tr>
+                            <th>{{data.teacher}}</th>
+                            <th>{{data.subject}}</th>
+                            <th>{{data.subject_code}}</th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row1">
+            <a href="/hodhomepage/{{id}}/">back to HODPAGE</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.getElementById("editableTableForm");
+            form.addEventListener("submit", function() {
+                var editedData = {};
+                var rows = document.querySelectorAll(
+                    "tbody tr");
+                rows.forEach(function(row) {
+                    var day = row.querySelector("th")
+                        .textContent.trim();
+                    editedData[day] = [];
+                    var cells = row.querySelectorAll(
+                        "td");
+                    cells.forEach(function(cell) {
+                        editedData[day].push(
+                            cell.textContent
+                            .trim());
+                    });
+                });
+                var editedDataInput = document.createElement(
+                    "input");
+                editedDataInput.type = "hidden";
+                editedDataInput.name = "edited_data";
+                editedDataInput.value = JSON.stringify(
+                    editedData);
+                form.appendChild(editedDataInput);
+            });
+        });
+    </script>
+</body>
+</html>

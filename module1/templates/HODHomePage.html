@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'HODHomePage.css' %}">
+</head>
+<body>
+    <div class="main-page">
+        <div class="row-1">
+            <div class="row-1-left-corner">TrackYourClass</div>
+            <div class="row-1-middle-part-name">Asansol Engineering College</div>
+            <div class="row-1-right-corner">
+                <a href="/logoutpage/" style="text-decoration: none;"> 
+                    <div class="logout-button">logout</div>
+                </a> 
+            </div>
+
+        </div>
+        <div class="row-2">
+            <div class="row-2-left-corner">
+
+                
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading">
+                        <a href="/hodhomepage/{{id}}/" style="color: antiquewhite;text-decoration:none">Home</a>
+                    </div>
+                </div>
+                
+
+
+                <!-- Teachers data -->
+
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">Teachers</div>
+                    {% for i in emp %}
+                    <div class="each-row-left-row-list"> <a
+                            href="/teachervisit/{{i.id}}/{{id}}/">{{i.name}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Student Data -->
+
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">Student</div>
+                    {% for j in semester %}
+                    <div class="each-row-left-row-list"> <a
+                            href="/studentvisit/{{j.id}}/{{id}}/">{{j.department}}
+                            -sem {{j.semester_count}} </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Giving Marks -->
+
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">Give Marks</div>
+                    {% for j in filtered_list %}
+                    <div class="each-row-left-row-list"> <a
+                            href="/marks/{{id}}/{{j.semester.id}}/">{{j.semester.department}}
+                            {{j.semester.semester_count}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- See Marks -->
+
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">See Marks</div>
+                    {% for j in filtered_list %}
+                    <div class="each-row-left-row-list"> <a
+                            href="/seemarks/{{j.semester.id}}/{{id}}/">
+                            {{j.semester.department}} {{j.semester.semester_count}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+                <!-- Take Attendance -->
+
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">Take Attendance</div>
+                    {% for j in filtered_list %}
+                    <div class="each-row-left-row-list"> <a
+                            href="/studentdailyattendance/{{j.semester.id}}/{{id}}/">
+                            {{j.semester.department}} {{j.semester.semester_count}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+                <!-- Only for HOD  -->
+
+
+                {% if context.is_hod == True %}
+
+                <!-- Making Routine -->
+
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">Make Routine</div>
+                    {% for j in semester %}
+                    <div class="each-row-left-row-list"> <a
+                            href="/routine/{{id}}/{{j.id}}/">{{j.department}}
+                            {{j.semester_count}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Assigning Teacher -->
+
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">Assign Teacher</div>
+                    {% for j in semester %}
+                    <div class="each-row-left-row-list"> <a
+                            href="/teacherforsemester/{{j.id}}/{{id}}/">{{j.department}}
+                            {{j.semester_count}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+                <!-- Lock CA Marks -->
+        
+                <div class="each-row-left-row">
+                    <div class="each-row-left-row-heading"
+                        onclick="showList(this)">Lock and View CA marks</div>
+                    {% for j in semester %}
+                    <div class="each-row-left-row-list">
+                        <a href="/lockviewmarks/{{id}}/{{j.id}}/">
+                            {{j.department}} {{j.semester_count}}
+                        </a>
+                    </div>
+                    
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+            </div>
+
+
+            <div class="row-2-middle-part">
+                <div class="row-2-middle-part-header">
+                        <img src="{{ context.photo.url }}" alt="">
+                        <div class="row-2-name-dept"> {{context.name}} <br><br>
+                            
+                                {% if context.is_hod == True %}
+                                    H.O.D 
+                                {% endif %}
+
+                                {{context.department}}
+                           
+                        </div>
+                </div>
+                
+                <div class="row-2-middle-part-show-routine">
+                    <div class="row-2-middle-part-show-routine-heading">
+                        {% if check == 0 %}
+                        {{day}}'s Routine
+                        {% else %}
+                            Enjoy {{day}},
+                            Nothing Scheduled
+                        {% endif %} 
+                    </div>
+                    <table border="1px solid black">
+                        <thead>
+                            {% for k in temp_dict %}
+                            {% for j in k %}
+                            <th class="timing">
+                                {{j.start_time}} -- {{j.end_time}}
+                            </th>
+                            {% endfor %}
+                            {% endfor %}
+                        </thead>
+                        <tbody>
+                            {% for k in temp_dict %}
+                            {% for j in k %}
+                            <th class="timing">
+                                {{j.subject}}
+                            </th>
+                            {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="mid-row-main-content"> -->
+                {% block start %}
+                <div class="main-block">
+                    {% with total_students=student|length %}
+                    <div class="cell-1">Total Students || {{total_students}}
+                    </div>
+                    {% endwith %}
+                    {% with total_steacher=emp|length %}
+                    <div class="cell-1">Total Teachers || {{total_steacher}}
+                    </div>
+                    {% endwith %}
+                </div>
+                {% endblock %}
+                <!-- </div> -->
+            </div>
+            <div class="row-2-right-corner">
+                <div class="calendar">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showList(element) {
+            var elementDiv = element.parentElement.children;
+            for (var i = 0; i < elementDiv.length; i++) {
+                var sibling = elementDiv[i];
+                if (sibling != elementDiv) {
+                    if (sibling.classList.contains(
+                            "each-row-left-row-list")) {
+                        if (sibling.style.display === 'block') {
+                            sibling.style.display = 'none';
+                        } else {
+                            sibling.style.display = 'block';
+                        }
+                    }
+                }
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarContainer = document.querySelector(
+                '.calendar');
+            const today = new Date();
+            const todayDate = today.getDate();
+            const lastDay = new Date(today.getFullYear(), today
+                .getMonth() + 1, 0).getDate();
+            let calendarContent =
+                `<div class="calendar-header">${today.toLocaleString('default', { month: 'long' })} ${today.getFullYear()}</div>`;
+            for (let day = 1; day <= lastDay; day++) {
+                const isToday = day === todayDate ? 'today' : '';
+                calendarContent +=
+                    `<div class="day ${isToday}">${day}</div>`;
+            }
+            calendarContainer.innerHTML = calendarContent;
+        });
+    </script>
+</body>
+</html>

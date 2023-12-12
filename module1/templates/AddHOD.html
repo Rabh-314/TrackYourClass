@@ -1,0 +1,55 @@
+{% extends "mainadmin.html" %}
+{% block start%}
+<div class="container">
+    <h2>Add HOD</h2>
+
+    {% if messages %}
+        <div class="for-success-only">
+            {% for i in messages %}
+                {{i}}
+            {% endfor %}
+        </div>
+        <br>
+        <a href="/addhod/" class="back-button">Back</a>
+    {% elif error_this %}
+        <div class="for-error-only">
+            {% if error_this %}
+            {{error_this}}
+            {% endif %}
+        </div><br>
+        <a href="/addhod/" class="back-button">Back</a>
+
+    {% else %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="gender">Department:</label>
+            <select id="gender" name="dept" required>
+                <option selected>Open this select menu</option>
+                {% for i in dept %}
+                <option value="{{i.id}}">{{i.department}}</option>
+                {% endfor %}>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="gender">Teacher:</label>
+            <select id="gender" name="teacher" required>
+                <option selected>Open this select menu</option>
+                {% for i in teacher %}
+                <option value="{{i.id}}">{{i.name}} {{i.department}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Register">
+        </div>
+        <div class="form-group">
+            <input type="reset" value="refresh">
+        </div>
+    
+    
+    </form>
+    {% endif %}
+    
+</div>
+{% endblock %}

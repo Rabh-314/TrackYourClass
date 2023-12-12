@@ -1,0 +1,26 @@
+{% extends "mainadmin.html" %}
+{% block start%}
+<div class="container-21" id="content1">
+  <h2>List Of the Departments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Department Name</th>
+                <th scope="col">Department Code</th>
+                <th scope="col">Course Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in context %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{i.department}}</td>
+                <td>{{i.department_code}}</td>
+                <td>{{i.course_duration}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

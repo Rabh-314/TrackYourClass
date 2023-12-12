@@ -1,0 +1,34 @@
+{% extends "HODHomePage.html" %}
+{% block start%}
+<div class="teachervisitmain">
+    {% if error_see_marks %}
+    {{error_see_marks}}
+    {% else %}
+    <div class="r-v-row1-e1" style="padding-top: 0;">
+        <h1>See Marks</h1>
+    </div>
+    <div class="r-v-row1-e2">
+        <table id="studentTable" border="2px solid black"
+            style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    {% for i in CA_List %}
+                    <th>{{i}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for j in exam_result_list %}
+                <tr>
+                    {% for k in j %}
+                    <th> {{k}} </th>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

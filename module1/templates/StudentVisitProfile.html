@@ -1,0 +1,46 @@
+{% extends "HODHomePage.html" %}
+{% block start%}
+<div class="teachervisitmain">
+    <div class="r-v-row1-e1">
+        <img src="{{ student.photo.url }}" alt="{{student.name}}">
+        <div class="details-teacher">
+            <h1>{{student.name}}</h1>
+            <h3>{{student.date_of_birth}}</h3>
+        </div>
+    </div>
+    <div class="r-v-row1-e2">
+        <h2>Students Details </h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name</td><td>:</td>
+                    <td> {{student.name}} </td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth</td><td>:</td>
+                    <td> {{student.date_of_birth}} </td>
+                </tr>
+                
+                <tr>
+                    <td>Phone</td><td>:</td>
+                    <td> {{student.phone}} </td>
+                </tr>
+                <tr>
+                    <td>Email</td><td>:</td>
+                    <td> {{student.mail}} </td>
+                </tr>
+                <tr>
+                    <td>Department</td><td>:</td>
+                    <td> {{student.department}} </td>
+                </tr>
+                <tr>
+                    <td>Semester</td><td>:</td>
+                    <td> {{student.semester.semester_count}} </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+{% endblock %}

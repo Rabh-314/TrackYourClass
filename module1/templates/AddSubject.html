@@ -1,0 +1,52 @@
+{% extends 'mainadmin.html' %}
+
+{% block start %}
+
+<div class="container">
+    <h2>Add New Subject</h2>
+    {% if messages %}
+        <div class="for-success-only">
+            {% for i in messages %}
+                {{i}}
+            {% endfor %}
+            
+        </div><br>
+        <a href="/addsubject/" class="back-button">Back</a>
+    {% elif error_this %}
+        <div class="for-error-only">
+            {% if error_this %}
+            {{error_this}}
+            {% endif %}
+        </div><br>
+        <a href="/addsubject/" class="back-button">Back</a>
+    {% else %}
+    <form method="post">
+
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Subject Name:</label>
+            <input type="text" id="name" name="subname"
+                placeholder="Enter department name" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="name">Subject Code:</label>
+            <input type="text" id="name" name="subcode"
+                placeholder="Enter department code" required>
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Register">
+        </div>
+        
+        <div class="form-group">
+            <input type="reset" value="refresh">
+        </div>
+        
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

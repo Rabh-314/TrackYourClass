@@ -1,0 +1,492 @@
+body {
+    margin: 0;
+}
+
+.main-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.row-1 {
+    background-color:#fcfcff;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.row-1-left-corner {
+    width: 15%;
+    background-color: #7d3dfc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.8vw;
+}
+
+.row-1-middle-part-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color:rgb(146, 32, 66);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.row-1-right-corner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height:25px;
+    width: 70px;
+    margin-right: 20px;
+    background-color: rgb(46, 130, 176);
+    border-radius: 14px;
+    color:white;
+    
+}
+
+.logout-button:hover{
+    cursor: pointer;
+    background-color: rgb(22, 62, 83);
+}
+
+.row-2 {
+    height: 92vh;
+    display: flex;
+}
+
+.row-2-left-corner {
+    position: relative;
+    width: 15%;
+    background-color: #2d2331;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    color: rgb(250, 248, 244);
+    overflow: scroll;
+}
+
+.each-row-left-row {
+    display: flex;
+    border-bottom: 1px solid rgb(235, 225, 225);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.each-row-left-row-heading,
+.each-row-left-row-list {
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.each-row-left-row-list {
+    padding-top: 2px;
+    background-color: rgb(0, 140, 150);
+    font-size: 13px;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+}
+
+.each-row-left-row-heading:hover {
+    background-color: black;
+    font-size: 16px;
+    padding-top: 3px;
+}
+
+.each-row-left-row-list:hover {
+    background-color: rgb(83, 115, 157);
+    font-size: 15px;
+}
+
+.each-row-left-row-list a {
+    color: bisque;
+    text-decoration: none;
+}
+
+
+
+.row-2-middle-part {
+    width: 67%;
+    background-color: rgb(217, 216, 206);
+    overflow: scroll;
+}
+
+
+.row-2-middle-part-header{
+    background-color: rgb(127, 52, 92);
+    padding-top: 20px;
+    height:140px;
+    display: flex;
+}
+
+.row-2-middle-part-header img{
+    margin-left: 100px;
+    height:120px;
+    width:120px;
+    border-radius: 50%;
+    border:2px solid green;
+}
+
+.row-2-name-dept{
+    margin-left: 100px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    color:whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.row-2-middle-part-show-routine {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background-color: rgb(127, 52, 92);
+}
+
+.row-2-middle-part-show-routine-heading {
+
+    padding: 7px;
+    padding-left: 40px;
+    padding-bottom: 14px;
+    height: auto;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+
+/* for teachersubsemfor */
+.teacherforsemandsub {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    padding-top: 5px;
+    background: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+}
+
+.subject-data-each-div {
+    height: auto;
+    /* background-color: rgb(152, 115, 45); */
+    margin-top: 6px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+
+.subject-data-each-div label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.subject-data-each-div input,
+select {
+    width: 60%;
+    height: 25px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+.subject-data-each-div input:focus,
+.subject-data-each-div select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.mid-row-main-content {
+    overflow: auto;
+}
+
+
+.row-2-right-corner {
+    width:18%;
+    background-color: rgb(237, 237, 232);
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+    overflow: scroll;
+}
+
+.row-2-left-corner::-webkit-scrollbar {
+    display: none;
+}
+
+.row-2-middle-part::-webkit-scrollbar {
+    display: none;
+}
+
+
+.row-2-right-corner::-webkit-scrollbar {
+    display: none;
+}
+
+/* for Calender */
+
+.calendar {
+    box-sizing: border-box;
+    padding-left: 8px;
+    width:100%;
+    border: 1px solid #ccc;
+    margin: 0px;
+    height: auto;
+    color: antiquewhite;
+    background-color: #222831;
+}
+
+.calendar-header {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 1.0em;
+    margin-bottom: 10px;
+}
+
+.day {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    display: inline-block;
+    margin: 1.5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    font-size: 0.8em;
+}
+
+.today {
+    background-color: #5f9fff;
+    color: #fff;
+    border: 1px solid rgb(20, 13, 33);
+}
+
+
+.main-block{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cell-1{
+    height:100px;
+    width:80%;
+    background: #2ca7ff;
+    margin: 20px;
+    border:1px solid burlywood;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color:rgb(8, 8, 8);
+    font-size: 25px;
+}
+
+
+
+
+
+/* For TeacherVisitpage */
+
+.teachervisitmain {
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border: 1px solid slategrey;
+    background: radial-gradient(circle, #670671 0%, #1998b1 100%);
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.r-v-row1-e1 {
+    display: flex;
+    float: left;
+    margin: 6px;
+    padding-left: 25px;
+}
+
+.r-v-row1-e1 img {
+    height: 150px;
+    width: 150px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+.details-teacher {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.details-teacher h1,
+h3 {
+    text-decoration: underline;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    margin: 0px;
+}
+
+
+.r-v-row1-e2 {
+    display: flex;
+    flex-direction: column;
+    margin: 6px;
+    padding-left: 25px;
+}
+
+.r-v-row1-e2 h2 {
+    font-size: 1.9em;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.r-v-row1-e2 table tr {
+    height: 40px;
+    padding-left: 25px;
+}
+
+.r-v-row1-e2 table td {
+    color: rgb(3, 8, 5);
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 700;
+    min-width: 30px;
+}
+
+/* StudentVisit */
+.students-visit-row2 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.each-row-student {
+    display: flex;
+    float: left;
+    padding-left: 30px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border: 1px solid black;
+}
+
+.each-row-student img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.students-visit-each-name {
+    margin-left: 60px;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+.students-visit-each-name a {
+    color: #000000;
+    text-decoration: none;
+}
+
+
+
+/* Marks */
+
+
+.form-tbl {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 20px;
+}
+
+.form-tbl th,
+.form-tbl td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    overflow: auto;
+    white-space: nowrap;
+    background-color: cornflowerblue;
+}
+
+.form-tbl th {
+    background-color: #f2f2f2;
+}
+
+.marks-last-row {
+    display: flex;
+    justify-content:flex-end;
+}
+
+.lock-data-marks,
+.lock-data-marks-button {
+    background-color: #00ffb7;
+    color: #160101;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 16px;
+    margin-left: 10px;
+}
+
+
+
+.lock-data-marks:hover,.lock-data-marks-button:hover {
+    background-color: #0056b3;
+    color: whitesmoke;
+}

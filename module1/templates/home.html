@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        #header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            z-index: 1000;
+            font-family: cursive;
+            animation: fadeIn 1s ease-out, gradientAnimation 5s infinite alternate;
+        }
+        @keyframes gradientAnimation {
+            0% {
+                color: #0400ff;
+                font-size: 30px;
+            }
+            50% {
+                color: #3cb7e7;
+                font-size: 34px;
+            }
+            75% {
+                color: #3ce76a;
+                font-size: 38px;
+            }
+            100% {
+                color: #a600ff;
+                font-size: 42px;
+            }
+        }
+        #banner {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        #mainText {
+            font-size: 36px;
+            color: #ff8989;
+            margin-bottom: 20px;
+        }
+        #ctaButton {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #355a54;
+            color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        #ctaButton:hover {
+            background-color: #3498db;
+            color: #fff;
+        }
+        #buttonContainer {
+            position: absolute;
+            top: 50%;
+            left: calc(50% + 20px);
+            transform: translateY(-50%);
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .authButton {
+            margin-top: 10px;
+            padding: 8px 15px;
+            font-size: 14px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .authButton:hover {
+            background-color: #2ecc71;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(52, 73, 94, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        #overlayContent {
+            text-align: center;
+            color: #fff;
+        }
+        .closeButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header">TrackYourClass</div>
+    <div id="banner">
+        <p id="mainText">Start You Journey With Us </p>
+        <button id="ctaButton" onclick="toggleButtonContainer()">Click
+            Me!</button>
+        <div id="buttonContainer">
+            <a class="authButton" href="/loginpage/">Login</a>
+            <a class="authButton" href="/signinpage/">Registration</a>
+        </div>
+    </div>
+    <script>
+        function toggleButtonContainer() {
+            var buttonContainer = document.getElementById("buttonContainer");
+            buttonContainer.style.display = buttonContainer.style.display ===
+                "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% extends "HODHomePage.html" %}
+{% load static %}
+{% block start %}
+{% if error_message_marks %}
+    <div class="teachervisitmain">{{error_message_marks}}</div>
+{% else %}
+<div class="teachervisitmain">
+    <div class="r-v-row1-e1">
+        <h1 style="padding-top: 0px;">{{subject.teacher}}</h1>
+        
+    </div>
+    <h3 style="text-decoration: none;padding-left:30px">{{subject.subject}} ({{subject.subject_code}})
+    </h3>
+    <div class="r-v-row1-e2">
+        <h1 style="font-size: 20px; font-weight:800 ">Semester {{subject.semester.semester_count}}</h1>
+        <div>
+            <form action="" id="marks_form" method="post">
+                {% csrf_token %}
+                <u style="font-size: 20px; font-weight:800 ">Marks for </u>:
+                <select id="exam" name="exam_name"
+                    onchange="handleSelectChange(this)">
+                    <option value="none">select</option>
+                    <option value="1">CA-1</option>
+                    <option value="2">CA-2</option>
+                    <option value="3">CA-3</option>
+                    <option value="4">CA-4</option>
+                </select>
+        </div>
+        <div>
+            <table class="form-tbl">
+                <thead>
+                    <th>Students</th>
+                    <th style="display:none">id</th>
+                    <th>CA-1</th>
+                    <th>CA-2</th>
+                    <th>CA-3</th>
+                    <th>CA-4</th>
+                </thead>
+                <tbody>
+                    {% for i in context_student %}
+                    <tr>
+                        <th>
+                            {{i.name}}
+                        </th>
+                        <th style="display:none">{{i.id}}</th>
+                        <td contenteditable="false"></td>
+                        <td contenteditable="false"></td>
+                        <td contenteditable="false"></td>
+                        <td contenteditable="false"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="marks-last-row">
+                <div class="lock-data-marks" onclick="prepareData()">Lock Data
+                </div>
+                <button type="submit" class="lock-data-marks-button"> Save </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{% static 'Marks.js' %}"></script>
+{% endif %}
+{% endblock %}

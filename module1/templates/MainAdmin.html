@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'StudentHomePage.css' %}">
+</head>
+<body>
+    <div class="main-page">
+        <div class="row-1">
+            <div class="row-1-left-corner">TrackYourClass</div>
+            <div class="row-1-middle-part-name">Asansol Engineering College
+            </div>
+            <div class="row-1-right-corner">
+                <a href="/logoutpage/" style="text-decoration: none;">
+                    <div class="logout-button">logout</div>
+                </a>
+            </div>
+        </div>
+        <div class="row-2">
+
+          
+            <div class="row-2-left-corner">
+
+                <a href="/adminhomepage/">
+                    <div class="each-row-left-row">
+                        Admin Home
+                    </div>
+                </a>
+                <a href="/addnewdepartment/">
+                    <div class="each-row-left-row">
+                        Add new Department
+                    </div>
+                </a>
+                <a href="/addnewsem/">
+                    <div class="each-row-left-row">
+                        Add new Sem
+                    </div>
+                </a>
+                <a href="/addnewteacher/">
+                    <div class="each-row-left-row">
+                        Add new Teacher
+                    </div>
+                </a>
+                <a href="/addsubject/">
+                    <div class="each-row-left-row">
+                        Add new Subject
+                    </div>
+                </a>
+                <a href="/addhod/">
+                    <div class="each-row-left-row">
+                        Add HOD
+                    </div>
+                </a>
+                <a href="/pendingstudent/">
+                    <div class="each-row-left-row">
+                        Pending Approval
+                    </div>
+                </a>
+                <a href="/studentlist/">
+                    <div class="each-row-left-row">
+                        Students
+                    </div>
+                </a>
+                <a href="/teacherlist/">
+                    <div class="each-row-left-row">
+                        Teachers
+                    </div>
+                </a>
+                <a href="/departmentlist/">
+                    <div class="each-row-left-row">
+                        Department List
+                    </div>
+                </a>
+                <a href="/subjectlist/">
+                    <div class="each-row-left-row">
+                        Subject List
+                    </div>
+                </a>
+            </div>
+            <div class="row-2-middle-part">
+                {% block start%}
+                {% endblock %}
+            </div>
+            <div class="row-2-right-corner">
+                <div class="calendar">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'StudentHomePage.js' %}"></script>
+</body>
+</html>

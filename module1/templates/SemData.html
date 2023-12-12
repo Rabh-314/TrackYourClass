@@ -1,0 +1,21 @@
+{% extends "mainadmin.html" %}
+
+{% block start%}
+  <form method="post">
+    {% csrf_token %}
+    Select Department:<select class="custom-select custom-select-lg mb-3" name="dept">
+        <option selected>Open this select menu</option>
+        {% for i in context %}
+          <option value="{{i.department_code}}">{{i.department}}</option>
+        {% endfor %}
+        
+      </select>
+    Select Semester:<select class="custom-select custom-select-lg mb-3" name="dept">
+        <option selected>Open this select menu</option>
+        {% for i in context %}
+          <option value="{{i.department_code}}">{{i.department}}</option>
+        {% endfor %}
+        
+      </select><br /><br />  
+  </form>
+{% endblock %}

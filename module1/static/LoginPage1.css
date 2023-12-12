@@ -1,0 +1,111 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(68, 97, 123);
+    margin:0%;
+    padding: 0px;
+    height:100vh;
+    
+}
+
+.login{
+    height: auto;
+    width:auto;
+    padding: 25px;
+    border-radius: 12px;
+    
+    
+}
+
+.login:hover{
+    
+    background-image: url("pexels-berend-de-kort-1452701.jpg");
+    background-size: cover;
+    color: rgb(4, 63, 4);
+    box-shadow: 20px 20px 5px rgb(75, 255, 75);
+    border:none;
+}
+
+.head{
+    text-align: center;
+    font-size: 6vh;
+    font-weight: bolder;
+    margin: 3vh;
+    text-decoration: underline;
+    color:aliceblue;
+}
+
+.inp{
+    margin:10px;
+    border: 0;
+    height:5vh;
+    width: 25vw;
+    border-bottom: 1px solid aliceblue;
+    background:inherit;
+    text-align: center;
+    font-size: 3vh;
+    font-weight: bolder;
+    
+}
+
+.inp:focus{
+    outline: none;
+    border-bottom: 2px solid aliceblue;
+    color:antiquewhite;
+}
+
+.inp::placeholder{
+    font-weight: bold;
+    color: aliceblue;
+    font-family: cursive;
+}
+
+.submit{
+     margin: 10px;
+     border:none;
+     height:7vh;
+     width: 25vw;
+     border-radius: 12px;
+     color:aliceblue;
+     font-size: 20px;
+     background: linear-gradient(rgb(161, 40, 87),rgb(17, 58, 58));
+}
+
+
+.submit:hover{
+    color:rgb(255, 253, 253);
+    font-size: 22px;
+    background: linear-gradient(rgb(21, 145, 126),rgb(39, 9, 39));
+}
+
+
+.login a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+
+.signin,.error{
+    margin: 4vh ;
+    height: auto;
+    width: auto;
+    color:aliceblue;
+    font-size: 14px;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+
+.signin a:hover{
+    color:black;
+    font-size: 18px;
+}
+.error{
+    color: rgb(54, 195, 113);
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 0;
+    text-decoration: underline;
+}

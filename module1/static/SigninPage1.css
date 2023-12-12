@@ -1,0 +1,233 @@
+body{
+    margin:0;
+    font-size: 2.7vh;
+    color:rgb(248, 248, 248);
+    word-wrap: break-word;
+}
+
+h1{
+    color:lightseagreen;
+    text-decoration: underline;
+}
+.main{
+    width:auto;
+    padding:10vh;
+    height:auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(75deg , rgb(58, 58, 194),rgb(143, 18, 70,0.8),rgb(33, 112, 170));
+}
+
+.photo,.form{
+
+    width: 30vw;
+    height:84vh;
+    background: transparent;
+    padding:5vh;
+    border:1px solid rgb(255, 255, 255);
+    box-shadow: 2.5px 2.5px 2.5px 2.5px rgb(154, 13, 197,0.7);
+    border-radius: 16px;
+}
+
+
+.photo{
+    background-image: url("pexels-lil-artsy-1132577.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.7);
+    width:25vw;
+}
+
+.hide-me-please{
+    display: none;
+}
+.inphoto{
+    color:rgb(20, 245, 230);
+    font-size: 25px;
+    
+}
+
+.inphoto b{
+    color: rgba(234, 243, 237, 0.5);
+    font-size: 35px;
+    font-family:sans-serif;
+}
+
+.inphoto u{
+    color: rgb(230, 245, 231);
+    font-family: cursive;
+    font-size:2.3rem;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+	-webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.form h1{
+    margin:0;
+    padding: 0;
+}
+
+
+.part{
+    height:70vh;
+    width:inherit;
+    display:flex;
+}
+
+
+.part1{
+    height:auto;
+    width:100vw;
+    float: left;
+    display: none;
+    transition: 2s;
+    margin:1.5vh;
+    padding: 0.9vh;
+}
+
+
+.element-name{
+    display: flex;
+    height:10vh;
+
+
+}
+
+
+
+.element{
+    height:10vh;
+    font-size: 18px;
+    color:rgb(255, 252, 252);
+}
+
+
+.inp,.inpN{
+    margin:0;
+    border: 0;
+    height:4.5vh;
+    width: 12vw;
+    border-bottom: 1px solid rgb(225, 222, 222);
+    background:inherit;
+    margin-right: 2.5vw;
+    font-size: 14px;
+    font-family: cursive;
+    color: rgb(0, 0, 0);
+}
+
+.inp{
+    width: 21vw;
+    
+}
+
+
+input[required] {
+    background-image: radial-gradient(
+        rgb(0, 255, 42) 25%,
+        transparent 26%
+      );
+    background-size: 1.2em 1.2em;
+    background-position: right top;
+    background-repeat: no-repeat;
+  }
+
+
+
+.inp:focus{
+    outline: none;
+    border-bottom: 2px solid aliceblue;
+    
+}
+
+
+.inpN:focus{
+    outline: none;
+    border-bottom: 2px solid aliceblue;
+}
+
+.inp::placeholder{
+    font-weight: bold;
+    color: rgb(0, 4, 8);
+    font-family: cursive;
+    font-size: 14px;
+}
+
+
+.inpN::placeholder{
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-family: cursive;
+    font-size: 14px;
+}
+
+.anim{
+    margin-top:5vh;
+    display:flex;
+    justify-content: space-between;
+    
+}
+
+.but1{
+    float:left;
+}
+
+.submit{
+    margin: 10px;
+    border:none;
+    height:7vh;
+    width: 25vw;
+    border-radius: 12px;
+    color:aliceblue;
+    font-size: 20px;
+    background: linear-gradient(rgb(32, 212, 185),rgb(58, 17, 58));
+}
+
+.submit:hover{
+    height:8vh;
+    width: 27vw;
+    color:rgb(255, 255, 255);
+    font-size: 22px;
+    background: linear-gradient(rgb(21, 145, 126),rgb(39, 9, 39));
+}
+
+.start-button-row{
+    margin-top: 10vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:40px;
+    font-size: 25px;
+    color:rgb(246, 253, 255);
+    cursor:pointer;
+}
+
+.start-button{
+    color:rgb(68, 218, 60);
+}
+
+.start-button:hover{
+    color:rgb(22, 0, 167);
+    font-size: 30px;
+}
+
+.start-home{
+    height: 30px;
+    width: 70px;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgb(54, 45, 45);
+    border-radius: 20px;
+}
+
+.start-button-row a{
+    text-decoration: none;
+    color:black;
+}
+
+
+.start-home:hover{
+    background-color: rgb(3, 35, 80);
+
+    color:aliceblue;
+}

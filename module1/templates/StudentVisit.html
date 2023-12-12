@@ -1,0 +1,22 @@
+{% extends "HODHomePage.html" %}
+{% block start%}
+<div class="teachervisitmain">
+    <div class="student-visit-row">
+        <h1> {{student_dept_details.department}} </h1>
+        <h1> Sem {{student_dept_details.semester_count}} </h1>
+    </div>
+    <div class="students-visit-row2">
+        <h3>Students List</h3>
+        {% for i in students %}
+        <div class="each-row-student">
+            <img src="{{ i.photo.url }}" alt="{{ i.name }}">
+            <div class="students-visit-each-name">
+                <a href="/studentvisitprofile/{{i.id}}/{{id}}/">
+                    {{i.name}}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

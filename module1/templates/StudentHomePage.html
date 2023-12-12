@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'StudentHomePage.css' %}">
+</head>
+<body>
+    <div class="main-page">
+        <div class="row-1">
+            <div class="row-1-left-corner">TrackYourClass</div>
+            <div class="row-1-middle-part-name">Asansol Engineering College
+            </div>
+            <div class="row-1-right-corner">
+                <a href="/logoutpage/" style="text-decoration: none;">
+                    <div class="logout-button">logout</div>
+                </a>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="row-2-left-corner">
+                <div class="each-row-left-row" onclick="showContent(1)">
+                    Teachers This Sem
+                </div>
+                <div class="each-row-left-row" onclick="showContent(2)">
+                    CA Marks
+                </div>
+                <div class="each-row-left-row" onclick="showContent(3)">
+                    Routine
+                </div>
+                
+            </div>
+            <div class="row-2-middle-part">
+                <div class="row-2-middle-part-header">
+                    <img src="{{ student.photo.url }}" alt="">
+                    <div class="row-2-name-dept"> {{student.name}} <br><br>
+                        {{student.department}}
+                        {{student.semester.semester_count}}
+                    </div>
+                </div>
+                
+                <!-- teacherThisSemester -->
+                <div class="teacher-list" id="content1">
+                    <h2>List of Teacher of This Semester</h2>
+                    <table>
+                        <thead>
+                            <th>Teacher</th>
+                            <th>Subject Name</th>
+                            <th>Subject Code</th>
+                        </thead>
+                        <tbody>
+                            {% for i in teacher_list %}
+                            <tr>
+                                <td>{{i.teacher}} </td>
+                                <td>{{i.subject}}</td>
+                                <td>{{i.subject_code}}</td>
+                                    
+                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- CA Marks -->
+                <div class="teacher-list" id="content2">
+                    <h2>CA Marks</h2>
+                    <table>
+                        <thead>
+                            {% for i in exam_name %}
+                            <th> {{i}} </th>
+                            {% endfor %}
+                        </thead>
+                        <tbody>
+                            {% for j in total_list %}
+                            <tr>
+                                {% for k in j %}
+                                <td> {{k}} </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="teacher-list" id="content3">
+                    <h2>Routine For This Semester</h2>
+                    <table>
+                        <thead>
+                            <tr style="font-size: 13px;">
+                                {% for i in time_slot_as_header %}
+                                <th> {{i}} </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for j in routine %}
+                            <tr>
+                                {% for p in j %}
+                                <td> {{p}} </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="teacher-list" id="content4">
+                </div>
+            </div>
+            <div class="row-2-right-corner">
+                <div class="calendar">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'StudentHomePage.js' %}"></script>
+</body>
+</html>

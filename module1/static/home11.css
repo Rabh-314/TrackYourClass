@@ -1,0 +1,43 @@
+body{
+    margin:0%;
+}
+
+.main{
+    
+    background-color: skyblue;
+    height:100vh;
+}
+
+.header{
+    height:12vh;
+    background-color: rgb(248, 243, 243);
+    margin:0%;
+    border:2px solid rgb(114, 82, 151);
+    
+}
+
+.header label {
+    font-size: 6vw; 
+    font-family: sans-serif; 
+    background: linear-gradient(to right, rgba(90, 10, 90, 0) 0%, rgba(63, 186, 186, 0.5) 20%, rgba(0, 0, 0, 0.963) 61%), linear-gradient(rgb(97, 217, 115) 52%, rgb(98, 64, 171) 60%, rgb(74, 108, 163) 61%); 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    
+  }
+  @keyframes wave {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50vw 10px;
+    }
+  }
+
+
+.next{
+   width:auto;
+
+  height:auto; 
+  background-image: url("pexels-brett-sayles-1869322.jpg");
+}

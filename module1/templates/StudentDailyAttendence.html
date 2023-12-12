@@ -1,0 +1,57 @@
+{% extends 'HODHomePage.html' %}
+{% block start %}
+<form action="" method="post" id="submit_data">
+    <div class="teachervisitmain">
+        {% csrf_token %}
+        <table border="1" style="border-collapse: collapse;" id="attendanceTable">
+            <tbody>
+                {% for student in student_class %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td style="display:none"> {{ student.id }} </td>
+                    <td style="text-align: center;">
+                        <input type="radio" value="present"
+                            name="attendance_{{student.id}}">Present
+                        <input type="radio" value="absent"
+                            name="attendance_{{student.id}}">Absent
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <input type="submit" value="submit"><input type="reset" value="refresh">
+    </div>
+
+</form>
+<script>
+    var data_packet = {};
+    
+    function makepacket(){
+        
+        var data = document.getElementById('attendanceTable');
+        var rows = data.getElementsByTagName('tr');
+        for (let i=0;i<rows.length;i++){
+
+
+            studentId = rows[i].cells[1].textContent.trim();
+            var selectedValue = document.querySelector('input[name="attendance_' + studentId + '"]:checked');
+
+            if (selectedValue!=null){
+                data_packet[studentId] = selectedValue.value;
+            }else{
+                data_packet[studentId] = 'none';
+            }
+        }
+    };
+
+    var form = document.getElementById('submit_data');
+    form.addEventListener('submit',function(){
+        makepacket();
+        var new_input_box = document.createElement('input');
+        new_input_box.type = 'hidden';
+        new_input_box.name = 'the_data_packet';
+        new_input_box.value = JSON.stringify(data_packet);
+        form.appendChild(new_input_box);
+    });
+</script>
+{% endblock %}
